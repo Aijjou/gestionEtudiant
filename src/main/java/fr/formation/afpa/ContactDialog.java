@@ -88,8 +88,6 @@ public class ContactDialog extends JDialog{
 		gc.weightx=1;
 		gc.weighty=1;
 		
-		gc.gridy=0;
-		
 		gc.gridx=0;
 		gc.anchor=GridBagConstraints.EAST;
 		gc.insets=rightPadding;

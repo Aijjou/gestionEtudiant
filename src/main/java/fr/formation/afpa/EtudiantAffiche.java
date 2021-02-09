@@ -28,7 +28,7 @@ public class EtudiantAffiche extends JDialog{
 	
 
 
-	private JLabel nomLabel, prenomLabel, modePasseLabel, selectPhotoLabel;
+	private JLabel nomLabel, prenomLabel, modePasseLabel, selectPhotoLabel, nom, prenom, mdp;
 	private JButton cancelButton;
 	private ImageIcon icon;
 
@@ -40,6 +40,9 @@ public class EtudiantAffiche extends JDialog{
 		nomLabel=new JLabel(" ");
 		prenomLabel=new JLabel(" ");
 		modePasseLabel=new JLabel(" ");
+		nom =new JLabel("NOM : ");
+		prenom=new JLabel("PRENOM : ");
+		mdp=new JLabel("Mot de Passe : ");
 		selectPhotoLabel=new JLabel(" ");
 		icon = new ImageIcon("photo.png");
 		
@@ -93,8 +96,6 @@ public class EtudiantAffiche extends JDialog{
 		gc.weightx=1;
 		gc.weighty=1;
 		
-		gc.gridy++;
-		
 		gc.gridx=0;
 		gc.anchor=GridBagConstraints.NORTH;
 		gc.insets=rightPadding;
@@ -103,8 +104,6 @@ public class EtudiantAffiche extends JDialog{
 		
 		gc.weightx=1;
 		gc.weighty=1;
-		
-		gc.gridy++;
 		
 		gc.gridx=0;
 		gc.anchor=GridBagConstraints.CENTER;
@@ -119,8 +118,13 @@ public class EtudiantAffiche extends JDialog{
 		gc.gridy++;
 		
 		gc.gridx=0;
-		gc.anchor=GridBagConstraints.CENTER;
+		gc.anchor=GridBagConstraints.WEST;
 		gc.insets=rightPadding;
+		controlsPannel.add(nom, gc);
+		
+
+		gc.anchor=GridBagConstraints.CENTER;
+		gc.insets=noPadding;
 		controlsPannel.add(nomLabel, gc);
 		
 		/**
@@ -132,8 +136,12 @@ public class EtudiantAffiche extends JDialog{
 		gc.gridy++;
 		
 		gc.gridx=0;
-		gc.anchor=GridBagConstraints.CENTER;
+		gc.anchor=GridBagConstraints.WEST;
 		gc.insets=rightPadding;
+		controlsPannel.add(prenom, gc);
+	
+		gc.anchor=GridBagConstraints.CENTER;
+		gc.insets=noPadding;
 		controlsPannel.add(prenomLabel, gc);
 		
 		
@@ -143,11 +151,16 @@ public class EtudiantAffiche extends JDialog{
 		gc.weightx=1;
 		gc.weighty=1;
 		
+		
 		gc.gridy++;
 		
 		gc.gridx=0;
-		gc.anchor=GridBagConstraints.CENTER;
+		gc.anchor=GridBagConstraints.WEST;
 		gc.insets=rightPadding;
+		controlsPannel.add(mdp, gc);
+	
+		gc.anchor=GridBagConstraints.CENTER;
+		gc.insets=noPadding;
 		controlsPannel.add(modePasseLabel, gc);
 		
 		

@@ -7,6 +7,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 
+import controllers.ControllerAfficheEtudiant;
 import controllers.ControllerEntete;
 import controllers.ControllerEtudiant;
 import controllers.ControllerGeneral;
@@ -27,6 +28,7 @@ public class Fenetre extends JFrame{
 	private ControllerEtudiant controllerEtudiant;
 	private ControllerTable controllerTableEtudiant;
 	private ControllerImage controllerImage;
+	private ControllerAfficheEtudiant controllerAfficheEtudiant;
 	
 	public Fenetre() {
 		
@@ -53,6 +55,7 @@ public class Fenetre extends JFrame{
 		controllerEntete=new ControllerEntete(this);
 		controllerEtudiant=new ControllerEtudiant(this);
 		controllerTableEtudiant=new ControllerTable(this);
+		controllerAfficheEtudiant = new ControllerAfficheEtudiant(this);
 	
 		/**
 		 * L'ajout de donnees dans la table
@@ -78,6 +81,7 @@ public class Fenetre extends JFrame{
 		contactTablePanel.getDeleteButton().addActionListener(controllerTableEtudiant);
 		contactTablePanel.getAfficheButton().addActionListener(controllerTableEtudiant);
 		
+		etudiantAffiche.getCancelButton().addActionListener(controllerAfficheEtudiant);
 	
 		
 		
