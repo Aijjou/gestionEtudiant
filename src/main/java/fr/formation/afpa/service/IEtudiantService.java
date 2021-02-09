@@ -15,6 +15,7 @@ public interface IEtudiantService {
 	public void supprimeUnEtudiant(long idEtudiant);
 	
 	public Etudiant chercherUnetudiantParSonNom(String nom);
+	public Etudiant chercherUnEtudiantParSonId(long idEtudiant);
 	
 
 }

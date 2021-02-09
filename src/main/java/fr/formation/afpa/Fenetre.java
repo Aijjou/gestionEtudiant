@@ -11,28 +11,21 @@ import controllers.ControllerEntete;
 import controllers.ControllerEtudiant;
 import controllers.ControllerGeneral;
 import controllers.ControllerImage;
-import controllers.ControllerSearchEtudiant;
+
 import controllers.ControllerTable;
 
-//import controleurs.ControleurContact;
-//import controleurs.EcouteurDialog;
-//import controleurs.EcouteurDialogRecherche;
-//import controleurs.EcouteurEntete;
-//import controleurs.EcouteurTableContact;
-//import medel.TypeContact;
+
 
 public class Fenetre extends JFrame{
 	
 	private EntetePanel entetePanel;
 	private ContactTablePanel contactTablePanel;
 	private ContactDialog contactDialog;
-	private ContactRechercheDialog contactRechercheDialog;
-	private ContactRechercheResultatDialog contactRechercheResultatDialog;
+	private EtudiantAffiche etudiantAffiche;
 	private ControllerGeneral controleurGeneral;
 	private ControllerEntete controllerEntete;
 	private ControllerEtudiant controllerEtudiant;
 	private ControllerTable controllerTableEtudiant;
-	private ControllerSearchEtudiant controllerSearchEtudiant;
 	private ControllerImage controllerImage;
 	
 	public Fenetre() {
@@ -53,15 +46,14 @@ public class Fenetre extends JFrame{
 		entetePanel=new EntetePanel();
 		contactTablePanel=new ContactTablePanel();
 		contactDialog=new ContactDialog(this);
-		contactRechercheDialog=new ContactRechercheDialog(this);
-		contactRechercheResultatDialog=new ContactRechercheResultatDialog(this);
+		etudiantAffiche=new EtudiantAffiche(this);
 		
 		controleurGeneral=new ControllerGeneral();
 		controllerImage = new ControllerImage(this);
 		controllerEntete=new ControllerEntete(this);
 		controllerEtudiant=new ControllerEtudiant(this);
 		controllerTableEtudiant=new ControllerTable(this);
-		controllerSearchEtudiant=new ControllerSearchEtudiant(this);
+	
 		/**
 		 * L'ajout de donnees dans la table
 		 */
@@ -84,10 +76,9 @@ public class Fenetre extends JFrame{
 		
 		contactTablePanel.getModifierButton().addActionListener(controllerTableEtudiant);
 		contactTablePanel.getDeleteButton().addActionListener(controllerTableEtudiant);
+		contactTablePanel.getAfficheButton().addActionListener(controllerTableEtudiant);
 		
-		contactRechercheDialog.getRechercherButton().addActionListener(controllerSearchEtudiant);
-		contactRechercheResultatDialog.getRechercherButton().addActionListener(controllerSearchEtudiant);
-		contactRechercheResultatDialog.getQuiterButton().addActionListener(controllerSearchEtudiant);
+	
 		
 		
 		/**
@@ -121,12 +112,10 @@ public class Fenetre extends JFrame{
 		return contactDialog;
 	}
 
-	public ContactRechercheDialog getContactRechercheDialog() {
-		return contactRechercheDialog;
-	}
 
-	public ContactRechercheResultatDialog getContactRechercheResultatDialog() {
-		return contactRechercheResultatDialog;
+
+	public EtudiantAffiche getEtudiantAffiche() {
+		return etudiantAffiche;
 	}
 
 	public ControllerGeneral getControllerGeneral() {

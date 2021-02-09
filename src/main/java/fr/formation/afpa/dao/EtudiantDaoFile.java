@@ -158,4 +158,30 @@ public class EtudiantDaoFile implements IEtudiantDao {
 
 	}
 
+	@Override
+	public Etudiant getEtudiantById(long idEtudiant) {
+	
+		List<Etudiant> listeEtudiants;
+		Etudiant trouvEtudiant = new Etudiant();
+
+		if (recuperationListEtudiant().size() != 0) {
+
+			listeEtudiants = recuperationListEtudiant();
+
+			for (int i = 0; i < listeEtudiants.size(); i++) {
+
+				if (listeEtudiants.get(i).getId() == idEtudiant) {
+
+					trouvEtudiant = listeEtudiants.get(i);
+
+				}
+
+			}
+			return trouvEtudiant;
+
+		}
+		return null;
+	
+	}
+
 }

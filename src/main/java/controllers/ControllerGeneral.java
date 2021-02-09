@@ -31,5 +31,9 @@ public class ControllerGeneral {
 	public Etudiant searchEtudiant(String nomEtudiant) {
 		return iEtudiantService.chercherUnetudiantParSonNom(nomEtudiant);
 	}
+	
+	public Etudiant searchEtudiantById(long idEtudiant) {
+		return iEtudiantService.chercherUnEtudiantParSonId(idEtudiant);
+	}
 
 }

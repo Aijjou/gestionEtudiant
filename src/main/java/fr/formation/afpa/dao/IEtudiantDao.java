@@ -15,6 +15,8 @@ public interface IEtudiantDao {
 	public void delete(long idEtudiant);
 	
 	public Etudiant getEtudiantByName(String nom);
+	
+	public Etudiant getEtudiantById(long idEtudiant);
 		
 		
 	

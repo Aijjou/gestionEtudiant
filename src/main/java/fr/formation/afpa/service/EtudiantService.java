@@ -35,4 +35,10 @@ public class EtudiantService implements IEtudiantService {
 		return dao.getEtudiantByName(nom);
 	}
 
+	@Override
+	public Etudiant chercherUnEtudiantParSonId(long idEtudiant) {
+		//
+		return dao.getEtudiantById(idEtudiant);
+	}
+
 }

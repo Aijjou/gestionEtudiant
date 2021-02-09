@@ -22,6 +22,7 @@ public class ContactTablePanel extends JPanel{
 	
 	private JButton modifierButton;
 	private JButton deleteButton;
+	private JButton afficheButton;
 	
 	private JPanel buttonsPanel;
 	
@@ -44,6 +45,7 @@ public class ContactTablePanel extends JPanel{
 		
 		modifierButton=new JButton("modifier");
 		deleteButton=new JButton("Delete");
+		afficheButton=new JButton("Affiche");
 		
 		/**
 		 * Buttons Panel
@@ -54,6 +56,7 @@ public class ContactTablePanel extends JPanel{
 		
 		buttonsPanel.add(modifierButton);
 		buttonsPanel.add(deleteButton);
+		buttonsPanel.add(afficheButton);
 		
 		/**
 		 * Pour centrer les informations
@@ -95,6 +98,14 @@ public class ContactTablePanel extends JPanel{
 
 	public JButton getDeleteButton() {
 		return deleteButton;
+	}
+
+	public JButton getAfficheButton() {
+		return afficheButton;
+	}
+
+	public void setAfficheButton(JButton afficheButton) {
+		this.afficheButton = afficheButton;
 	}
 
 }
