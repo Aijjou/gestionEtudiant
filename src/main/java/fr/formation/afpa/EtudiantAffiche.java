@@ -28,7 +28,7 @@ public class EtudiantAffiche extends JDialog{
 	
 
 
-	private JLabel nomLabel, prenomLabel, modePasseLabel, selectPhotoLabel, nom, prenom, mdp;
+	private JLabel nomLabel, prenomLabel, modePasseLabel, selectPhotoLabel, nom, prenom, mdp, dateNaissance, naissance;
 	private JButton cancelButton;
 	private ImageIcon icon;
 
@@ -40,9 +40,13 @@ public class EtudiantAffiche extends JDialog{
 		nomLabel=new JLabel(" ");
 		prenomLabel=new JLabel(" ");
 		modePasseLabel=new JLabel(" ");
+		dateNaissance=new JLabel(" ");
+		
+		
 		nom =new JLabel("NOM : ");
 		prenom=new JLabel("PRENOM : ");
 		mdp=new JLabel("Mot de Passe : ");
+		naissance=new JLabel("Date de Naissance : ");
 		selectPhotoLabel=new JLabel(" ");
 		icon = new ImageIcon("photo.png");
 		
@@ -148,6 +152,26 @@ public class EtudiantAffiche extends JDialog{
 		/**
 		 * Next row
 		 */
+		
+		
+		gc.weightx=1;
+		gc.weighty=1;
+		
+		gc.gridy++;
+		
+		gc.gridx=0;
+		gc.anchor=GridBagConstraints.WEST;
+		gc.insets=rightPadding;
+		controlsPannel.add(naissance, gc);
+		
+
+		gc.anchor=GridBagConstraints.CENTER;
+		gc.insets=noPadding;
+		controlsPannel.add(dateNaissance, gc);
+		
+		
+		
+		
 		gc.weightx=1;
 		gc.weighty=1;
 		
@@ -228,6 +252,22 @@ public class EtudiantAffiche extends JDialog{
 
 	public void setIcon(ImageIcon icon) {
 		this.icon = icon;
+	}
+
+	public JLabel getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(JLabel dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+	public JLabel getNaissance() {
+		return naissance;
+	}
+
+	public void setNaissance(JLabel naissance) {
+		this.naissance = naissance;
 	}
 
 

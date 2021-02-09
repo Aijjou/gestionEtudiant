@@ -1,5 +1,6 @@
 package fr.formation.afpa;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,18 +13,18 @@ import fr.formation.afpa.service.EtudiantService;
 public class ContactTableModel extends AbstractTableModel {
 
 	/**
-	 * Les colonnes a afficher
+	 * Les colonnes a afficherS
 	 */
-	String[] colonnes = new String[] { "idEtudiant", "nom", "prenom", "mdp", "image" };
+	String[] colonnes = new String[] { "idEtudiant", "Nom", "Prenom", "Mote de passe", "Date Naissance" };
 
 	/**
-	 * La liste des contacts
+	 * La liste des etidiants
 	 */
 
-
-	
 	List<Etudiant> etudiants = new ArrayList<>();
 
+	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+	
 	@Override
 	public String getColumnName(int index) {
 
@@ -51,7 +52,7 @@ public class ContactTableModel extends AbstractTableModel {
 			case 1: return etudiant.getNomString();
 			case 2: return etudiant.getPrenomString();
 			case 3: return etudiant.getMotDePasseString();
-			case 4: return etudiant.getImageString();
+			case 4: return formatter.format(etudiant.getDatenaissance());
 			
 		}
 		return null;

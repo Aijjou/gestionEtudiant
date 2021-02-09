@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.text.SimpleDateFormat;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -49,7 +50,7 @@ public class ControllerTable implements ActionListener {
 				fenetre.getContactDialog().setVisible(true);
 
 			} else if (e.getSource().equals(fenetre.getContactTablePanel().getAfficheButton())) {
-
+				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
 				ImageIcon imageIcon = new ImageIcon(etudiant.getImageString()); 
 				Image image = imageIcon.getImage(); 
 				Image newimg = image.getScaledInstance(250, 300,  java.awt.Image.SCALE_SMOOTH);   
@@ -59,6 +60,7 @@ public class ControllerTable implements ActionListener {
 				fenetre.getEtudiantAffiche().getNomLabel().setText(etudiant.getNomString());
 				fenetre.getEtudiantAffiche().getPrenomLabel().setText(etudiant.getPrenomString());
 				fenetre.getEtudiantAffiche().getModePasseLabel().setText(etudiant.getMotDePasseString());
+				fenetre.getEtudiantAffiche().getDateNaissance().setText(formatter.format(etudiant.getDatenaissance()));
 				fenetre.getEtudiantAffiche().getSelectPhotoLabel().setIcon(imageIcon);
 				fenetre.getEtudiantAffiche().setVisible(true);
 

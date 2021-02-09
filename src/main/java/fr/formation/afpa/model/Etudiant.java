@@ -2,6 +2,7 @@ package fr.formation.afpa.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -15,23 +16,26 @@ public class Etudiant implements Serializable {
 	String prenomString;
 	String motDePasseString;
 	String imageString; 
+	Date datenaissance;
 	List<Integer> notes;
 
-	public Etudiant(String nomString, String prenomString, String motDePasseString, List<Integer> notes) {
+	public Etudiant(String nomString, String prenomString, String motDePasseString, List<Integer> notes, Date date) {
 		super();
 		serialVersionUID += 1;
 		this.id = serialVersionUID;
 		this.nomString = nomString;
 		this.prenomString = prenomString;
 		this.motDePasseString = motDePasseString;
+		this.datenaissance = date;
 		this.notes = new ArrayList<>();
 	}
 	public Etudiant() {
 		serialVersionUID += 1;
 		this.id = serialVersionUID;
+		
 	}
 
-	public Etudiant(String nomString, String prenomString, String motDePasseString, String image) {
+	public Etudiant(String nomString, String prenomString, String motDePasseString, String image, Date date) {
 		super();
 		serialVersionUID += 1;
 		this.id = serialVersionUID;
@@ -39,6 +43,7 @@ public class Etudiant implements Serializable {
 		this.prenomString = prenomString;
 		this.motDePasseString = motDePasseString;
 		this.imageString = image;
+		this.datenaissance = date;
 		this.notes = new ArrayList<Integer>();
 	}
 
@@ -91,6 +96,12 @@ public class Etudiant implements Serializable {
 	}
 	public void setImageString(String imageString) {
 		this.imageString = imageString;
+	}
+	public Date getDatenaissance() {
+		return datenaissance;
+	}
+	public void setDatenaissance(Date datenaissance) {
+		this.datenaissance = datenaissance;
 	}
 
 
