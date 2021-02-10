@@ -13,7 +13,7 @@ import fr.formation.afpa.model.Etudiant;
 
 public class ControllerModification implements ActionListener {
 
-	Fenetre fenetre;
+	static Fenetre fenetre;
 	Etudiant etudiant;
 	File selectedFile;
 	static long id;
@@ -28,6 +28,20 @@ public class ControllerModification implements ActionListener {
 	public ControllerModification(Fenetre fenetre) {
 		this.fenetre = fenetre;
 
+	}
+	
+	
+	public static void changed() {
+		if (!fenetre.getContactDialog().getNomTextField().getText().isEmpty()
+				&& fenetre.getContactDialog().getNomTextField().getText().length() > 4
+				&& !fenetre.getContactDialog().getPrenomTextField().getText().isEmpty()
+				&& fenetre.getContactDialog().getPrenomTextField().getText().length() > 0
+				&& !fenetre.getContactDialog().getMotDePasse().getText().isEmpty()
+				&& fenetre.getContactDialog().getMotDePasse().getText().length() > 4) {
+			fenetre.getContactDialog().getModifierButton().setEnabled(true);
+		}else {
+			fenetre.getContactDialog().getModifierButton().setEnabled(false);
+		}
 	}
 
 	@Override

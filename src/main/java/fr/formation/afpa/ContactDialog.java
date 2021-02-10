@@ -28,6 +28,7 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import controllers.ControllerEtudiant;
+import controllers.ControllerModification;
 import fr.formation.afpa.model.DateLabelFormatter;
 
 public class ContactDialog extends JDialog {
@@ -56,44 +57,53 @@ public class ContactDialog extends JDialog {
 		nomTextField.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				ControllerEtudiant.changed();
+				ControllerModification.changed();
 			}
 
 			public void removeUpdate(DocumentEvent e) {
 				ControllerEtudiant.changed();
+				ControllerModification.changed();
 			}
 
 			public void insertUpdate(DocumentEvent e) {
 				ControllerEtudiant.changed();
+				ControllerModification.changed();
 			}
 
 		});
-		
+
 		prenomTextField.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				ControllerEtudiant.changed();
+				ControllerModification.changed();
 			}
 
 			public void removeUpdate(DocumentEvent e) {
 				ControllerEtudiant.changed();
+				ControllerModification.changed();
 			}
 
 			public void insertUpdate(DocumentEvent e) {
 				ControllerEtudiant.changed();
+				ControllerModification.changed();
 			}
 
 		});
-		
+
 		motDePasse.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				ControllerEtudiant.changed();
+				ControllerModification.changed();
 			}
 
 			public void removeUpdate(DocumentEvent e) {
 				ControllerEtudiant.changed();
+				ControllerModification.changed();
 			}
 
 			public void insertUpdate(DocumentEvent e) {
 				ControllerEtudiant.changed();
+				ControllerModification.changed();
 			}
 
 		});
@@ -106,8 +116,7 @@ public class ContactDialog extends JDialog {
 		model = new UtilDateModel();
 		datePanel = new JDatePanelImpl(model, p);
 		datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-		
-		
+
 		okButton = new JButton("Ajouter");
 		cancelButton = new JButton("Cancel");
 		photoButton = new JButton("Photo");
