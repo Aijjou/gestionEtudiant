@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import fr.formation.afpa.model.Etudiant;
@@ -31,11 +32,23 @@ public class EtudiantDaoFile implements IEtudiantDao {
 			listeEtudiants = recuperationListEtudiant();
 			for (int i = 0; i < listeEtudiants.size(); i++) {
 
-				if (listeEtudiants.get(i).getId() == e.getId()
-						|| listeEtudiants.get(i).getNomString().equals(e.getNomString())) {
+				if (listeEtudiants.get(i).getId() == e.getId()) {
 
-					message = "L'etudiant existe déjà";
-					return message;
+					try {
+						long id = listeEtudiants.stream().max(Comparator.comparingLong(Etudiant::getId)).orElseThrow(NoSuchFieldException::new).getId();
+						e.setId(id+1);
+						listeEtudiants.add(e);
+						if (enregistrementFile(listeEtudiants)) {
+							message = "Enregistement effectué";
+						}
+
+						return message;
+					} catch (NoSuchFieldException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						return message;
+					}
+				
 				} else {
 					listeEtudiants.add(e);
 					if (enregistrementFile(listeEtudiants)) {

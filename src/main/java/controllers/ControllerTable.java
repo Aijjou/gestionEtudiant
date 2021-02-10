@@ -46,6 +46,7 @@ public class ControllerTable implements ActionListener {
 				}
 			} else if (e.getSource().equals(fenetre.getContactTablePanel().getModifierButton())) {
 				fenetre.getContactDialog().getOkButton().setVisible(false);
+				fenetre.getContactDialog().getModifierButton().setVisible(true);
 				int respone = JOptionPane.showConfirmDialog(fenetre,
 						"Voulez-vous vraiment modifier l'etudiant en question", "Confirmer la Modification,",
 						JOptionPane.OK_CANCEL_OPTION);
