@@ -1,4 +1,4 @@
-package controllers;
+package fr.formation.afpa.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +33,7 @@ public class ControllerEtudiant implements ActionListener {
 				&& !fenetre.getContactDialog().getPrenomTextField().getText().isEmpty()
 				&& fenetre.getContactDialog().getPrenomTextField().getText().length() > 0
 				&& !fenetre.getContactDialog().getMotDePasse().getText().isEmpty()
-				&& fenetre.getContactDialog().getMotDePasse().getText().length() > 4)
+				&& fenetre.getContactDialog().getMotDePasse().getText().length() > 4 && fenetre.getContactDialog().getDatePicker().getSize()!=null)
 			fenetre.getContactDialog().getOkButton().setEnabled(true);
 		else {
 			fenetre.getContactDialog().getOkButton().setEnabled(false);

@@ -7,13 +7,13 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 
-import controllers.ControllerAfficheEtudiant;
-import controllers.ControllerEntete;
-import controllers.ControllerEtudiant;
-import controllers.ControllerGeneral;
-import controllers.ControllerImage;
-import controllers.ControllerModification;
-import controllers.ControllerTable;
+import fr.formation.afpa.controllers.ControllerAfficheEtudiant;
+import fr.formation.afpa.controllers.ControllerEntete;
+import fr.formation.afpa.controllers.ControllerEtudiant;
+import fr.formation.afpa.controllers.ControllerGeneral;
+import fr.formation.afpa.controllers.ControllerImage;
+import fr.formation.afpa.controllers.ControllerModification;
+import fr.formation.afpa.controllers.ControllerTable;
 
 public class Fenetre extends JFrame {
 

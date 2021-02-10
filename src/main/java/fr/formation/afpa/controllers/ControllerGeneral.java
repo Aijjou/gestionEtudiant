@@ -1,4 +1,4 @@
-package controllers;
+package fr.formation.afpa.controllers;
 
 import java.util.List;
 

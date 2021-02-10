@@ -7,6 +7,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.swing.BorderFactory;
@@ -27,8 +30,8 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
-import controllers.ControllerEtudiant;
-import controllers.ControllerModification;
+import fr.formation.afpa.controllers.ControllerEtudiant;
+import fr.formation.afpa.controllers.ControllerModification;
 import fr.formation.afpa.model.DateLabelFormatter;
 
 public class ContactDialog extends JDialog {
@@ -116,6 +119,16 @@ public class ContactDialog extends JDialog {
 		model = new UtilDateModel();
 		datePanel = new JDatePanelImpl(model, p);
 		datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+
+		datePicker.addPropertyChangeListener(new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+
+				ControllerEtudiant.changed();
+				ControllerModification.changed();
+			}
+
+		});
 
 		okButton = new JButton("Ajouter");
 		cancelButton = new JButton("Cancel");
