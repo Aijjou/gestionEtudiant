@@ -18,8 +18,8 @@ public class EtudiantService implements IEtudiantService {
 		return dao.add(e);
 	}
 
-	public Etudiant modifierEtudiant(Etudiant e) {
-		return dao.update(e);
+	public void modifierEtudiant(Etudiant e) {
+		 dao.update(e);
 	}
 	
 	

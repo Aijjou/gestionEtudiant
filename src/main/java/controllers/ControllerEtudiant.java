@@ -35,6 +35,8 @@ public class ControllerEtudiant implements ActionListener {
 
 		} else if (e.getSource().equals(fenetre.getContactDialog().getOkButton())) {
 
+		
+			
 			String nom = fenetre.getContactDialog().getNomTextField().getText();
 			String prenom = fenetre.getContactDialog().getPrenomTextField().getText();
 			String mdpString = fenetre.getContactDialog().getMotDePasse().getText();

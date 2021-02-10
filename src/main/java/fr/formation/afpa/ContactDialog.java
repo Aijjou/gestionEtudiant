@@ -30,7 +30,7 @@ public class ContactDialog extends JDialog {
 	private JLabel nomLabel, prenomLabel, modePasseLabel, selectPhotoLabel, selectBirthDay;
 	private JTextField nomTextField, prenomTextField;
 	private JPasswordField motDePasse;
-	private JButton okButton, cancelButton, photoButton;
+	private JButton okButton, cancelButton, photoButton, modifierButton;
 	UtilDateModel model;
 	JDatePanelImpl datePanel;
 	JDatePickerImpl datePicker;
@@ -58,9 +58,10 @@ public class ContactDialog extends JDialog {
 		datePanel = new JDatePanelImpl(model,p);
 		datePicker = new JDatePickerImpl(datePanel,new DateLabelFormatter());
 
-		okButton = new JButton("Ok");
+		okButton = new JButton("Ajouter");
 		cancelButton = new JButton("Cancel");
 		photoButton = new JButton("Photo");
+		modifierButton = new JButton("Modifier");
 
 		setLayout(new GridBagLayout());
 
@@ -185,6 +186,8 @@ public class ContactDialog extends JDialog {
 		buttonsPanel.add(okButton, gc);
 		gc.gridx++;
 		buttonsPanel.add(cancelButton, gc);
+		gc.gridx++;
+		buttonsPanel.add(modifierButton, gc);
 
 		setLayout(new BorderLayout());
 		add(controlsPannel, BorderLayout.CENTER);
@@ -229,6 +232,14 @@ public class ContactDialog extends JDialog {
 
 	public void setDatePicker(JDatePickerImpl datePicker) {
 		this.datePicker = datePicker;
+	}
+
+	public JButton getModifierButton() {
+		return modifierButton;
+	}
+
+	public void setModifierButton(JButton modifierButton) {
+		this.modifierButton = modifierButton;
 	}
 
 }

@@ -15,6 +15,11 @@ public class ControllerGeneral {
 		iEtudiantService.ajouterEtudiant(etudiant);
 
 	}
+	
+	public void modifieUnEtudiant(Etudiant etudiant) {
+		
+		iEtudiantService.modifierEtudiant(etudiant);
+	}
 
 	public List<Etudiant> getAllEtudiants() {
 

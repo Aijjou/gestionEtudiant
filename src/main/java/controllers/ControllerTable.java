@@ -15,8 +15,11 @@ import fr.formation.afpa.model.Etudiant;
 
 public class ControllerTable implements ActionListener {
 
-	Fenetre fenetre;
+	private Fenetre fenetre;
 	private BufferedImage image;
+	private long idEtudiant;
+	private SimpleDateFormat formatter;
+	private ControllerModification controllerModification;
 
 	public ControllerTable(Fenetre fenetre) {
 		this.fenetre = fenetre;
@@ -32,7 +35,7 @@ public class ControllerTable implements ActionListener {
 
 			if (e.getSource().equals(fenetre.getContactTablePanel().getDeleteButton())) {
 				int respone = JOptionPane.showConfirmDialog(fenetre,
-						"Voulez-vous vraiment supprimé le contact en question", "Confirmer la modification",
+						"Voulez-vous vraiment supprimé l'etudiant en question", "Confirmer la suppression,",
 						JOptionPane.OK_CANCEL_OPTION);
 				if (respone == JOptionPane.OK_OPTION) {
 					fenetre.getControllerGeneral().supprimerUnEtudian(etudiant.getId());
@@ -42,20 +45,29 @@ public class ControllerTable implements ActionListener {
 							JOptionPane.INFORMATION_MESSAGE);
 				}
 			} else if (e.getSource().equals(fenetre.getContactTablePanel().getModifierButton())) {
-				fenetre.getContactDialog().getNomTextField().setText(etudiant.getNomString());
-				fenetre.getContactDialog().getPrenomTextField().setText(etudiant.getPrenomString());
-				fenetre.getContactDialog().getMotDePasse().setText(etudiant.getMotDePasseString());
-				fenetre.getContactDialog().getOkButton().setText("Modifier");
-				fenetre.getContactDialog().getOkButton().setActionCommand("Modification");
-				fenetre.getContactDialog().setVisible(true);
+				fenetre.getContactDialog().getOkButton().setVisible(false);
+				int respone = JOptionPane.showConfirmDialog(fenetre,
+						"Voulez-vous vraiment modifier l'etudiant en question", "Confirmer la Modification,",
+						JOptionPane.OK_CANCEL_OPTION);
+				if (respone == JOptionPane.OK_OPTION) {
+					controllerModification = new ControllerModification(fenetre, etudiant.getId());
+					formatter = new SimpleDateFormat("dd/MM/yyyy");
+					fenetre.getContactDialog().setVisible(true);
+					fenetre.getContactDialog().getNomTextField().setText(etudiant.getNomString());
+					fenetre.getContactDialog().getPrenomTextField().setText(etudiant.getPrenomString());
+					fenetre.getContactDialog().getMotDePasse().setText(etudiant.getMotDePasseString());
+					fenetre.getContactDialog().getDatePicker()
+							.setToolTipText(formatter.format(etudiant.getDatenaissance()));
+
+				}
 
 			} else if (e.getSource().equals(fenetre.getContactTablePanel().getAfficheButton())) {
-				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-				ImageIcon imageIcon = new ImageIcon(etudiant.getImageString()); 
-				Image image = imageIcon.getImage(); 
-				Image newimg = image.getScaledInstance(250, 300,  java.awt.Image.SCALE_SMOOTH);   
+				formatter = new SimpleDateFormat("dd/MM/yyyy");
+				ImageIcon imageIcon = new ImageIcon(etudiant.getImageString());
+				Image image = imageIcon.getImage();
+				Image newimg = image.getScaledInstance(250, 300, java.awt.Image.SCALE_SMOOTH);
 				imageIcon = new ImageIcon(newimg);
-				
+
 				fenetre.getControllerGeneral().searchEtudiantById(etudiant.getId());
 				fenetre.getEtudiantAffiche().getNomLabel().setText(etudiant.getNomString());
 				fenetre.getEtudiantAffiche().getPrenomLabel().setText(etudiant.getPrenomString());

@@ -28,7 +28,7 @@ public class EntetePanel extends JPanel{
 		
 		exitItem=new JMenuItem("Exit");
 		ajouterContactItem=new JMenuItem("Ajouter Etudiant");
-		chercherContactItem=new JMenuItem("Chercher Etudiant");
+		chercherContactItem=new JMenuItem("Ajouter Notes");
 		
 		exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
 		ajouterContactItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));

@@ -43,7 +43,7 @@ public class ContactTablePanel extends JPanel{
 		contactTableModel=new ContactTableModel();
 		table.setModel(contactTableModel);
 		
-		modifierButton=new JButton("modifier");
+		modifierButton=new JButton("Modifier");
 		deleteButton=new JButton("Delete");
 		afficheButton=new JButton("Affiche");
 		

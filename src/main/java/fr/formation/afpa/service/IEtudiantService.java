@@ -10,7 +10,7 @@ public interface IEtudiantService {
 	
 	public String ajouterEtudiant(Etudiant e);
 	
-	public Etudiant modifierEtudiant(Etudiant e);
+	public void modifierEtudiant(Etudiant e);
 	
 	public void supprimeUnEtudiant(long idEtudiant);
 	

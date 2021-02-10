@@ -104,9 +104,29 @@ public class EtudiantDaoFile implements IEtudiantDao {
 
 	}
 
-	public Etudiant update(Etudiant e) {
-		// TODO Auto-generated method stub
-		return null;
+	public void update(Etudiant e) {
+
+		List<Etudiant> listeEtudiants = new ArrayList<Etudiant>();
+
+		if (recuperationListEtudiant().size() != 0) {
+
+			listeEtudiants = recuperationListEtudiant();
+
+			for (int i = 0; i < listeEtudiants.size(); i++) {
+
+				if (listeEtudiants.get(i).getId() == e.getId()) {
+
+					listeEtudiants.remove(i);
+					listeEtudiants.add(e);
+
+				}
+
+			}
+
+			enregistrementFile(listeEtudiants);
+
+		}
+
 	}
 
 	@Override
@@ -160,7 +180,7 @@ public class EtudiantDaoFile implements IEtudiantDao {
 
 	@Override
 	public Etudiant getEtudiantById(long idEtudiant) {
-	
+
 		List<Etudiant> listeEtudiants;
 		Etudiant trouvEtudiant = new Etudiant();
 
@@ -181,7 +201,7 @@ public class EtudiantDaoFile implements IEtudiantDao {
 
 		}
 		return null;
-	
+
 	}
 
 }
