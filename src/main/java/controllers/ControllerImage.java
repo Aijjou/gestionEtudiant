@@ -6,6 +6,7 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import fr.formation.afpa.Fenetre;
 import fr.formation.afpa.model.Etudiant;
@@ -27,6 +28,8 @@ public class ControllerImage implements ActionListener {
 
 		if (e.getSource().equals(fenetre.getContactDialog().getPhotoButton())) {
 			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Images", "jpg", "png", "gif", "bmp"));
+			fileChooser.setAcceptAllFileFilterUsed(false);
 			fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
 			int result = fileChooser.showOpenDialog(fenetre.getContactDialog());
 			if (result == JFileChooser.APPROVE_OPTION) {

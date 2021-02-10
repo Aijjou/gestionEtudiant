@@ -25,6 +25,7 @@ public class ControllerEntete implements ActionListener {
 				System.exit(0);
 			}
 		} else if (e.getSource().equals(fenetre.getEntetePanel().getAjouterContactItem())) {
+			fenetre.getContactDialog().getOkButton().setEnabled(false);
 			fenetre.getContactDialog().getOkButton().setVisible(true);
 			fenetre.getContactDialog().getModifierButton().setVisible(false);
 			fenetre.getContactDialog().getOkButton().setText("Ajouter");

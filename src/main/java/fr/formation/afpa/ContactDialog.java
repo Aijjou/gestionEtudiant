@@ -18,11 +18,16 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
+import javax.swing.text.Element;
 
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
+import controllers.ControllerEtudiant;
 import fr.formation.afpa.model.DateLabelFormatter;
 
 public class ContactDialog extends JDialog {
@@ -48,16 +53,61 @@ public class ContactDialog extends JDialog {
 		prenomTextField = new JTextField(15);
 		motDePasse = new JPasswordField(15);
 
+		nomTextField.getDocument().addDocumentListener(new DocumentListener() {
+			public void changedUpdate(DocumentEvent e) {
+				ControllerEtudiant.changed();
+			}
+
+			public void removeUpdate(DocumentEvent e) {
+				ControllerEtudiant.changed();
+			}
+
+			public void insertUpdate(DocumentEvent e) {
+				ControllerEtudiant.changed();
+			}
+
+		});
 		
+		prenomTextField.getDocument().addDocumentListener(new DocumentListener() {
+			public void changedUpdate(DocumentEvent e) {
+				ControllerEtudiant.changed();
+			}
+
+			public void removeUpdate(DocumentEvent e) {
+				ControllerEtudiant.changed();
+			}
+
+			public void insertUpdate(DocumentEvent e) {
+				ControllerEtudiant.changed();
+			}
+
+		});
+		
+		motDePasse.getDocument().addDocumentListener(new DocumentListener() {
+			public void changedUpdate(DocumentEvent e) {
+				ControllerEtudiant.changed();
+			}
+
+			public void removeUpdate(DocumentEvent e) {
+				ControllerEtudiant.changed();
+			}
+
+			public void insertUpdate(DocumentEvent e) {
+				ControllerEtudiant.changed();
+			}
+
+		});
+
 		Properties p = new Properties();
 		p.put("text.today", "Today");
 		p.put("text.month", "Month");
 		p.put("text.year", "Year");
-		
-		model = new UtilDateModel();
-		datePanel = new JDatePanelImpl(model,p);
-		datePicker = new JDatePickerImpl(datePanel,new DateLabelFormatter());
 
+		model = new UtilDateModel();
+		datePanel = new JDatePanelImpl(model, p);
+		datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		
+		
 		okButton = new JButton("Ajouter");
 		cancelButton = new JButton("Cancel");
 		photoButton = new JButton("Photo");
@@ -102,9 +152,9 @@ public class ContactDialog extends JDialog {
 		 */
 		gc.weightx = 1;
 		gc.weighty = 1;
-		
+
 		gc.gridy++;
-		
+
 		gc.gridx = 0;
 		gc.anchor = GridBagConstraints.EAST;
 		gc.insets = rightPadding;
