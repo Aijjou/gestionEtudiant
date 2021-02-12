@@ -16,9 +16,9 @@ public class ControllerGeneral {
 
 	}
 	
-	public void modifieUnEtudiant(Etudiant etudiant) {
+	public Etudiant modifieUnEtudiant(Etudiant etudiant) {
 		
-		iEtudiantService.modifierEtudiant(etudiant);
+		return iEtudiantService.modifierEtudiant(etudiant);
 	}
 
 	public List<Etudiant> getAllEtudiants() {

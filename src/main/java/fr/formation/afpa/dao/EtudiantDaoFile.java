@@ -28,38 +28,38 @@ public class EtudiantDaoFile implements IEtudiantDao {
 		System.out.println(e);
 
 		if (recuperationListEtudiant().size() != 0) {
-
+			long max = 0;
 			listeEtudiants = recuperationListEtudiant();
 			for (int i = 0; i < listeEtudiants.size(); i++) {
 
-				if (listeEtudiants.get(i).getId() == e.getId()) {
+				max = listeEtudiants.get(i).getId();
 
-					try {
-						long id = listeEtudiants.stream().max(Comparator.comparingLong(Etudiant::getId)).orElseThrow(NoSuchFieldException::new).getId();
-						e.setId(id+1);
-						listeEtudiants.add(e);
-						if (enregistrementFile(listeEtudiants)) {
-							message = "Enregistement effectué";
-						}
+				if (listeEtudiants.get(i).getId() > max) {
+					max = listeEtudiants.get(i).getId();
+				}
 
-						return message;
-					} catch (NoSuchFieldException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						return message;
+			}
+
+			System.out.println(max);
+			for (int i = 0; i < listeEtudiants.size(); i++) {
+
+				if (listeEtudiants.get(i).getId().longValue() == e.getId().longValue()) {
+					e.setId(max + 1);
+					listeEtudiants.add(e);
+					if (enregistrementFile(listeEtudiants)) {
+						message = "Enregistement effectué";
 					}
-				
+					break;
 				} else {
 					listeEtudiants.add(e);
 					if (enregistrementFile(listeEtudiants)) {
 						message = "Enregistement effectué";
 					}
-
-					return message;
+					break;
 				}
 
 			}
-
+			return message;
 		} else {
 
 			listeEtudiants = new ArrayList<>();
@@ -117,7 +117,7 @@ public class EtudiantDaoFile implements IEtudiantDao {
 
 	}
 
-	public void update(Etudiant e) {
+	public Etudiant update(Etudiant e) {
 
 		List<Etudiant> listeEtudiants = new ArrayList<Etudiant>();
 
@@ -127,7 +127,7 @@ public class EtudiantDaoFile implements IEtudiantDao {
 
 			for (int i = 0; i < listeEtudiants.size(); i++) {
 
-				if (listeEtudiants.get(i).getId() == e.getId()) {
+				if (listeEtudiants.get(i).getId().longValue() == e.getId().longValue()) {
 
 					listeEtudiants.remove(i);
 					listeEtudiants.add(e);
@@ -139,7 +139,7 @@ public class EtudiantDaoFile implements IEtudiantDao {
 			enregistrementFile(listeEtudiants);
 
 		}
-
+		return e;
 	}
 
 	@Override

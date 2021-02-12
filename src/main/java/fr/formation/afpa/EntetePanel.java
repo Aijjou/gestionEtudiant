@@ -14,7 +14,7 @@ public class EntetePanel extends JPanel{
 	
 	private JMenuBar menuBar;
 	private JMenu fileMenu, contactMenu;
-	private JMenuItem exitItem, ajouterContactItem, chercherContactItem;
+	private JMenuItem exitItem, ajouterContactItem, ajouteUneNoteEtudiant;
 	
 	
 	public EntetePanel() {
@@ -28,15 +28,15 @@ public class EntetePanel extends JPanel{
 		
 		exitItem=new JMenuItem("Exit");
 		ajouterContactItem=new JMenuItem("Ajouter Etudiant");
-		chercherContactItem=new JMenuItem("Ajouter Notes");
+	
 		
 		exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
 		ajouterContactItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
-		chercherContactItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
+		
 		
 		fileMenu.add(exitItem);
 		contactMenu.add(ajouterContactItem);
-		contactMenu.add(chercherContactItem);
+	
 		
 		menuBar.add(fileMenu);
 		menuBar.add(contactMenu);
@@ -53,8 +53,6 @@ public class EntetePanel extends JPanel{
 		return ajouterContactItem;
 	}
 
-	public JMenuItem getChercherContactItem() {
-		return chercherContactItem;
-	}
+
 
 }

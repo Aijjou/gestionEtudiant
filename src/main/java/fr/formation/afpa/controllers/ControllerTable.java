@@ -78,6 +78,16 @@ public class ControllerTable implements ActionListener {
 				fenetre.getEtudiantAffiche().setVisible(true);
 
 			}
+			else if (e.getSource().equals(fenetre.getContactTablePanel().getAfficheNoteButton())) {
+				fenetre.getControllerGeneral().searchEtudiantById(etudiant.getId());	
+				fenetre.getNoteEtudiantAffiche().getId().setText(etudiant.getId().toString());
+				fenetre.getNoteEtudiantAffiche().getNom().setText(etudiant.getNomString());
+				fenetre.getNoteEtudiantAffiche().getPrenom().setText(etudiant.getPrenomString());
+				fenetre.getNoteEtudiantAffiche().getNoteTablePanel().setData(etudiant.getNotes());
+				fenetre.getNoteEtudiantAffiche().getValidationButton().setActionCommand("Valid");
+				fenetre.getNoteEtudiantAffiche().setVisible(true);
+
+			}
 		}
 	}
 

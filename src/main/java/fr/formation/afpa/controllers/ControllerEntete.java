@@ -32,7 +32,6 @@ public class ControllerEntete implements ActionListener {
 			fenetre.getContactDialog().getOkButton().setActionCommand("Ajout");
 			fenetre.getContactDialog().setVisible(true);
 		} 
-
 	}
 
 }

@@ -10,7 +10,7 @@ public interface IEtudiantDao {
 	
 	public String add(Etudiant e);
 	
-	public void update(Etudiant e);
+	public Etudiant update(Etudiant e);
 	
 	public void delete(long idEtudiant);
 	

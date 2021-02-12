@@ -5,22 +5,25 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JSplitPane;
 
 import fr.formation.afpa.controllers.ControllerAfficheEtudiant;
+
 import fr.formation.afpa.controllers.ControllerEntete;
 import fr.formation.afpa.controllers.ControllerEtudiant;
 import fr.formation.afpa.controllers.ControllerGeneral;
 import fr.formation.afpa.controllers.ControllerImage;
 import fr.formation.afpa.controllers.ControllerModification;
+import fr.formation.afpa.controllers.ControllerNoteEtudiant;
 import fr.formation.afpa.controllers.ControllerTable;
 
 public class Fenetre extends JFrame {
 
 	private EntetePanel entetePanel;
-	private ContactTablePanel contactTablePanel;
+	private EtudiantTablePanel contactTablePanel;
 	private ContactDialog contactDialog;
 	private EtudiantAffiche etudiantAffiche;
+	private NoteEtudiantAffiche noteEtudiantAffiche;
+	private NoteTablePanel noteTablePanel;
 	private ControllerGeneral controleurGeneral;
 	private ControllerEntete controllerEntete;
 	private ControllerEtudiant controllerEtudiant;
@@ -28,6 +31,9 @@ public class Fenetre extends JFrame {
 	private ControllerImage controllerImage;
 	private ControllerAfficheEtudiant controllerAfficheEtudiant;
 	private ControllerModification controllerModification;
+	private ControllerNoteEtudiant controllerNoteEtudiant;
+	
+	
 
 	public Fenetre() {
 
@@ -44,9 +50,11 @@ public class Fenetre extends JFrame {
 		 * L'instanciation des panels
 		 */
 		entetePanel = new EntetePanel();
-		contactTablePanel = new ContactTablePanel();
+		contactTablePanel = new EtudiantTablePanel();
 		contactDialog = new ContactDialog(this);
 		etudiantAffiche = new EtudiantAffiche(this);
+		noteEtudiantAffiche = new NoteEtudiantAffiche(this);
+		noteTablePanel =  new NoteTablePanel();
 
 		controleurGeneral = new ControllerGeneral();
 		controllerImage = new ControllerImage(this);
@@ -55,6 +63,8 @@ public class Fenetre extends JFrame {
 		controllerTableEtudiant = new ControllerTable(this);
 		controllerAfficheEtudiant = new ControllerAfficheEtudiant(this);
 		controllerModification = new ControllerModification(this);
+		controllerNoteEtudiant = new ControllerNoteEtudiant(this);
+	
 
 		/**
 		 * L'ajout de donnees dans la table
@@ -68,7 +78,7 @@ public class Fenetre extends JFrame {
 		 */
 		entetePanel.getExitItem().addActionListener(controllerEntete);
 		entetePanel.getAjouterContactItem().addActionListener(controllerEntete);
-		entetePanel.getChercherContactItem().addActionListener(controllerEntete);
+		
 
 		contactDialog.getCancelButton().addActionListener(controllerEtudiant);
 
@@ -81,8 +91,15 @@ public class Fenetre extends JFrame {
 		contactTablePanel.getModifierButton().addActionListener(controllerTableEtudiant);
 		contactTablePanel.getDeleteButton().addActionListener(controllerTableEtudiant);
 		contactTablePanel.getAfficheButton().addActionListener(controllerTableEtudiant);
+		contactTablePanel.getAfficheNoteButton().addActionListener(controllerTableEtudiant);
+		
+		
 
 		etudiantAffiche.getCancelButton().addActionListener(controllerAfficheEtudiant);
+		
+
+		noteEtudiantAffiche.getCancelButton().addActionListener(controllerNoteEtudiant);
+		noteEtudiantAffiche.getValidationButton().addActionListener(controllerNoteEtudiant);
 
 		/**
 		 * Le layout manager de la fenetre
@@ -107,7 +124,7 @@ public class Fenetre extends JFrame {
 		return entetePanel;
 	}
 
-	public ContactTablePanel getContactTablePanel() {
+	public EtudiantTablePanel getContactTablePanel() {
 		return contactTablePanel;
 	}
 
@@ -121,6 +138,14 @@ public class Fenetre extends JFrame {
 
 	public ControllerGeneral getControllerGeneral() {
 		return controleurGeneral;
+	}
+
+	public NoteEtudiantAffiche getNoteEtudiantAffiche() {
+		return noteEtudiantAffiche;
+	}
+
+	public void setNoteEtudiantAffiche(NoteEtudiantAffiche noteEtudiantAffiche) {
+		this.noteEtudiantAffiche = noteEtudiantAffiche;
 	}
 
 }

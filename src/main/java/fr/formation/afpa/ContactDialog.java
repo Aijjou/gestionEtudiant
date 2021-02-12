@@ -40,9 +40,9 @@ public class ContactDialog extends JDialog {
 	private JTextField nomTextField, prenomTextField;
 	private JPasswordField motDePasse;
 	private JButton okButton, cancelButton, photoButton, modifierButton;
-	UtilDateModel model;
-	JDatePanelImpl datePanel;
-	JDatePickerImpl datePicker;
+	private UtilDateModel model;
+	private JDatePanelImpl datePanel;
+	private JDatePickerImpl datePicker;
 
 	public ContactDialog(JFrame parent) {
 		super(parent, "Etudiant", false);

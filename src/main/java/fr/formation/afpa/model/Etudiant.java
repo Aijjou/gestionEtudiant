@@ -9,42 +9,43 @@ import java.util.List;
 
 public class Etudiant implements Serializable {
 
-	
-	private static long serialVersionUID = 0;
-	private long id;
+	private static final long serialVersionUID = 1L;
+	private static long count = 0;
+	private Long id;
 	String nomString;
 	String prenomString;
 	String motDePasseString;
 	String imageString; 
 	Date datenaissance;
-	List<Integer> notes;
+	List<Note> notes;
 
-	public Etudiant(String nomString, String prenomString, String motDePasseString, List<Integer> notes, Date date) {
+	public Etudiant(String nomString, String prenomString, String motDePasseString, List<Note> notes, Date date) {
 		super();
-		serialVersionUID += 1;
-		this.id = serialVersionUID;
+		count += 1;
+		this.id = count;
 		this.nomString = nomString;
 		this.prenomString = prenomString;
 		this.motDePasseString = motDePasseString;
 		this.datenaissance = date;
-		this.notes = new ArrayList<>();
+		this.notes = new ArrayList<Note>();
 	}
 	public Etudiant() {
-		serialVersionUID += 1;
-		this.id = serialVersionUID;
+		count += 1;
+		this.id = count;
+		this.notes = new ArrayList<Note>();
 		
 	}
 
 	public Etudiant(String nomString, String prenomString, String motDePasseString, String image, Date date) {
 		super();
-		serialVersionUID += 1;
-		this.id = serialVersionUID;
+		count += 1;
+		this.id = count;
 		this.nomString = nomString;
 		this.prenomString = prenomString;
 		this.motDePasseString = motDePasseString;
 		this.imageString = image;
 		this.datenaissance = date;
-		this.notes = new ArrayList<Integer>();
+		this.notes = new ArrayList<Note>();
 	}
 
 	@Override
@@ -52,9 +53,9 @@ public class Etudiant implements Serializable {
 		return "Etudiant [nomString=" + nomString + ", prenomString=" + prenomString + "]";
 	}
 
-	public Double getMoyenne() {
-		return (double) (notes.stream().mapToInt(Integer::intValue).sum() / notes.stream().count());
-	}
+//	public Double getMoyenne() {
+////		return (double) (notes.stream().mapToInt(Integer::intValue).sum() / notes.stream().count());
+//	}
 
 	public String getNomString() {
 		return nomString;
@@ -80,19 +81,19 @@ public class Etudiant implements Serializable {
 		this.motDePasseString = motDePasseString;
 	}
 
-	public List<Integer> getNotes() {
+	public List<Note> getNotes() {
 		return notes;
 	}
 
-	public void setNotes(List<Integer> notes) {
+	public void setNotes(List<Note> notes) {
 		this.notes = notes;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(long id) {
+	public void setId(Long id) {
 		 this.id = id;
 	}
 	public String getImageString() {

@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 import fr.formation.afpa.model.Etudiant;
 import fr.formation.afpa.service.EtudiantService;
 
-public class ContactTableModel extends AbstractTableModel {
+public class EtudiantTableModel extends AbstractTableModel {
 
 	/**
 	 * Les colonnes a afficherS
